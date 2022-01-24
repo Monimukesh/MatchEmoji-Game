@@ -18,7 +18,7 @@ var mem = {
   // (B) PRELOAD
   preload : function () {
     // (B1) GET HTML GAME WRAPPER
-    mem.hWrap = document.getElementById("mem-game");
+    mem.hWrap = document.getElementById("match-emoji-game");
 
     // (B2) PRELOAD IMAGES
     for (let i=0; i<=mem.sets; i++) {
@@ -27,7 +27,7 @@ var mem = {
         mem.loaded++;
         if (mem.loaded == mem.sets+1) { mem.init(); }
       };
-      img.src = mem.url+"smiley-"+i+".png";
+      img.src = "image"+mem.url+"smiley-"+i+".png";
     }
   },
   
@@ -65,7 +65,7 @@ var mem = {
     for (let i=0; i<mem.sets * 2; i++) {
       let card = document.createElement("div");
       card.className = "mem-card";
-      card.innerHTML = `<img src='${mem.url}smiley-0.png'/>`;
+      card.innerHTML = `<img src='image/${mem.url}smiley-0.png'/>`;
       card.dataset.idx = i;
       card.onclick = mem.open;
       mem.hWrap.appendChild(card);
@@ -78,7 +78,7 @@ var mem = {
     // (D1) OPEN SELECTED CARD
     mem.moves++;
     let idx = this.dataset.idx;
-    this.innerHTML = `<img src='${mem.url}smiley-${mem.grid[idx]}.png'/>`;
+    this.innerHTML = `<img src='image/${mem.url}smiley-${mem.grid[idx]}.png'/>`;
     this.onclick = "";
     this.classList.add("open");
     
@@ -120,8 +120,8 @@ var mem = {
     bb.classList.remove("wrong");
     aa.classList.remove("open");
     bb.classList.remove("open");
-    aa.innerHTML = `<img src='${mem.url}smiley-0.png'/>`;
-    bb.innerHTML = `<img src='${mem.url}smiley-0.png'/>`;
+    aa.innerHTML = `<img src='image/${mem.url}smiley-0.png'/>`;
+    bb.innerHTML = `<img src='image/${mem.url}smiley-0.png'/>`;
     aa.onclick = mem.open;
     bb.onclick = mem.open;
     mem.locked = null;
